@@ -210,15 +210,15 @@ ifeq ($(call try-build,$(SOURCE_STRLCPY),$(CFLAGS),$(LDFLAGS)),y)
 	CFLAGS_STATOPT	+= -DHAVE_STRLCPY
 endif
 
-ifeq ($(call try-build,$(SOURCE_BFD),$(CFLAGS),$(LDFLAGS) -lbfd -static),y)
+ifeq ($(call try-build,$(SOURCE_BFD),$(CFLAGS),$(LDFLAGS) -lbfd -ldl -lz -liberty -static),y)
 	CFLAGS_STATOPT	+= -DCONFIG_HAS_BFD
 	OBJS_STATOPT	+= symbol.o
-	LIBS_STATOPT	+= -lbfd
+	LIBS_STATOPT	+= -lbfd -ldl -lz -liberty
 else
-	ifeq ($(call try-build,$(SOURCE_BFD),$(CFLAGS),$(LDFLAGS) -lbfd),y)
+	ifeq ($(call try-build,$(SOURCE_BFD),$(CFLAGS),$(LDFLAGS) -lbfd -ldl -lz -liberty),y)
 		CFLAGS_DYNOPT	+= -DCONFIG_HAS_BFD
 		OBJS_DYNOPT	+= symbol.o
-		LIBS_DYNOPT	+= -lbfd
+		LIBS_DYNOPT	+= -lbfd -ldl -lz -liberty
 	else
 		NOTFOUND	+= bfd
 	endif
