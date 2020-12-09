@@ -19,8 +19,8 @@
 #define SIGKVMPAUSE		(SIGRTMIN + 1)
 #define SIGKVMTASK		(SIGRTMIN + 2)
 
-#define KVM_PID_FILE_PATH	"/.lkvm/"
-#define HOME_DIR		getenv("HOME")
+#define KVM_PID_FILE_PATH	"/lkvm/"
+#define SOCK_DIR		"/run/hypervisor/"
 #define KVM_BINARY_NAME		"lkvm"
 
 #ifndef PAGE_SIZE

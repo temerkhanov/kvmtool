@@ -13,7 +13,7 @@ static int handle_kvm_command(int argc, char **argv)
 
 int main(int argc, char *argv[])
 {
-	kvm__set_dir("%s/%s", HOME_DIR, KVM_PID_FILE_PATH);
+	kvm__set_dir("%s/%s", SOCK_DIR, KVM_PID_FILE_PATH);
 
 	return handle_kvm_command(argc - 1, &argv[1]);
 }
