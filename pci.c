@@ -320,10 +320,6 @@ static void pci_config_bar_wr(struct kvm *kvm,
 	 */
 	if (value == 0xffffffff) {
 		value = ~(pci__bar_size(pci_hdr, bar_num) - 1);
-		/* Preserve the special bits. */
-		value = (value & mask) | (pci_hdr->bar[bar_num] & ~mask);
-		pci_hdr->bar[bar_num] = value;
-		return;
 	}
 
 	value = (value & mask) | (pci_hdr->bar[bar_num] & ~mask);
